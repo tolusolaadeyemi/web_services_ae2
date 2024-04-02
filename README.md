@@ -2,7 +2,7 @@
  a full-stack web application that will be used on an intranet by local authorities to manage a programme of energy efficiency upgrades for domestic homes.
 
 #git workflow 
-- to clone this repository onto your computer (i.e to have this current git repo and be able to push changes to it run `git clone`
+- to clone this repository onto your computer (i.e to have this current git repo and be able to push changes to it run `git clone https://github.com/tolusolaadeyemi/web_services_ae2.git`
 - by default we will always be on the `main` branch, any features to be worked should involve checking out to a different branch, ideally each of the tasks outlined for the day for each person counts as a feature. so first make sure you are on the main branch by running `git branch` (the highlighted branch is your current branch). then **create** and **checkout** to a new branch by running `git checkout -b new_branch_name`.
 - for any changes you makes while working on the new branch you can run `git status` to see an **committed** and **uncommitted** changes, you can also see these (with a bit more clarity) in the **source control** tab built into vscode.
 - to commit a change, you first run `git add name_of_files_to_be_committed` or simply `git add .` if you want to commit all the files you made changes to and then run `git commit -m commit_message`. commit messages should be as clear but concise as possible. i.e what did you add to the project with this commit.
