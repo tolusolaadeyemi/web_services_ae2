@@ -11,13 +11,15 @@
         <form method="POST" action="?/logout">
           <button type="submit">{data.user} - log out</button>
         </form>
-      {:else}
         <span>
-          <a href="/login">Login</a> or <a href="/register">register</a> for an account
           <a href="/search">Search EPC</a>
           <a href="/all_homes">All Homes</a>
           <a href="/house_detail">House Detail Page</a>
           <a href="/tracked">Tracked Homes</a>
+        </span>
+        {:else}
+        <span>
+          <a href="/login">Login</a> or <a href="/register">register</a> for an account
         </span>
       {/if}
     </nav>
