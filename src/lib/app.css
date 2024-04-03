@@ -1,0 +1,28 @@
+@import "open-props/normalize";
+@import "open-props/buttons";
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    color: var(--stone-10);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--indigo-12);
+}
+
+a {
+    color: var(--indigo-10);
+    text-decoration: none;
+
+    &:hover {
+        text-shadow: 0 0 15px var(--indigo-4);
+    }
+}

@@ -1,6 +1,6 @@
 <script>
-    import All_Homes from "$lib/components/all.svelte";
+    import HomePage from "$lib/components/HomePage.svelte";
     export let form;
   </script>
 
-<All_Homes title="All Homes" form="{form}" />
+<HomePage title="Home Page" form="{form}" />

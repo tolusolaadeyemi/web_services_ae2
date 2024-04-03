@@ -1,2 +1,16 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+    import AllHomes from "$lib/components/AllHomes.svelte";
+    //import HouseDetail "$lib/components/HouseDetail.svelte";
+    export let data;
+    let homes = data.homes;
+  </script>
+
+
+{#if data.user}
+    <AllHomes />
+  {/if}
+<!-- 
+  {#each homes as homes}
+  <HouseDetail toot="{toot}" />
+ {/each}  -->
+
