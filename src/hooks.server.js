@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+import { getUser } from "$lib/db";
 
 export async function handle({ event, resolve }) {
   const authCookie = event.cookies.get("Token");
@@ -8,8 +9,7 @@ export async function handle({ event, resolve }) {
 
     try {
       // Verify JWT
-      const jwtUser = jwt.verify(token, "JWT_SECRET_TOKEN");
-
+      const jwtUser = jwt.verify(token, process.env.JWT_TOKEN);
       // Check that the user exists on db
       if (!getUser(jwtUser?.id)) {
         throw new Error("User not found");

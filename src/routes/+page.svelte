@@ -1,15 +1,16 @@
 <script>
-    import Toot from "$lib/components/Toot.svelte";
-    import Compose from "$lib/components/Compose.svelte";
+    import AllHomes from "$lib/components/AllHomes.svelte";
+    //import HouseDetail "$lib/components/HouseDetail.svelte";
     export let data;
-    let toots = data.toots;
+    let homes = data.homes;
   </script>
-  
-  {#if data.user}
-    <Compose />
+
+
+{#if data.user}
+    <AllHomes />
   {/if}
-  
-  {#each toots as toot}
-    <Toot toot="{toot}" />
-  {/each}
-  
+<!-- 
+  {#each homes as homes}
+  <HouseDetail toot="{toot}" />
+ {/each}  -->
+

@@ -1,4 +1,5 @@
 import { redirect, fail } from "@sveltejs/kit";
+import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { getUser } from "$lib/db";
 
@@ -22,25 +23,25 @@ export const actions = {
 
       // Get user details from database
       const user = await getUser(form.username);
+      if (!user) throw new Error("User not found");
 
-      // Check password and generate JWT if they match
-      if (user && user.password == form.password) {
-        // Create Token
-        const token = jwt.sign({ id: user.username }, "JWT_SECRET_TOKEN", {
-          expiresIn: "1d",
-        });
+      // Compare password hash
+      const match = await bcrypt.compare(form.password, user.password);
+      if (!match) throw new Error("Incorrect username or password");
 
-        // Set Cookie
-        cookies.set("Token", `Bearer ${token}`, {
-          httpOnly: true,
-          secure: true,
-          sameSite: "strict",
-          maxAge: 60 * 60 * 24,
-          path: "/",
-        });
-      } else {
-        throw new Error("Incorrect username or password");
-      }
+      // Create Token
+      const token = jwt.sign({ id: user.username }, process.env.JWT_TOKEN, {
+        expiresIn: "1d",
+      });
+
+      // Set Cookie
+      cookies.set("Token", `Bearer ${token}`, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "strict",
+        maxAge: 60 * 60 * 24,
+        path: "/",
+      });
     } catch (err) {
       return fail(422, {
         error: err.message,
