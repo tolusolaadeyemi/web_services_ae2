@@ -5,7 +5,9 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
-		"preview": "vite preview"
+		"preview": "vite preview",
+		"lint": "prettier --check .",
+		"format": "prettier --write ."
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.0.0",
@@ -19,7 +21,8 @@
 	"type": "module",
 	"dependencies": {
 		"better-sqlite3": "^9.4.3",
-		"open-props": "^1.6.21",
+		"jsonwebtoken": "^9.0.2",
+		"open-props": "^1.6.20",
 		"postcss-jit-props": "^1.0.14"
 	}
 }
