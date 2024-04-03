@@ -1,0 +1,38 @@
+project_root/
+├── src/
+│   ├── routes/
+│   │   ├── all_homes/
+│   │   │   ├── +all_homes.server.js
+│   │   │   └── +all_homes.svelte
+│   │   ├── tracked_homes/
+│   │   │   ├── +tracked_homes.server.js
+│   │   │   └── +tracked_homes.svelte
+│   │   ├── house_detail/
+│   │   │   ├── +house_detail.server.js
+│   │   │   └── +house_detail.svelte
+│   │   ├── login/
+│   │   │   ├── +login.server.js
+│   │   │   └── +login.svelte
+│   │   ├── register/
+│   │   │   ├── +register.server.js
+│   │   │   └── +register.svelte
+│   │   └── homepage/
+│   │       ├── +homepage.server.js
+│   │       └── +homepage.svelte
+│   ├── lib/
+│   │   ├── components/
+│   │   │   ├── Homepage.svelte
+│   │   │   ├── Search.svelte
+│   │   │   ├── Login.svelte
+│   │   │   ├── Tracked.svelte
+│   │   │   ├── AllHomes.svelte
+│   │   │   ├── Compose.svelte
+│   │   │   └── ...other components
+│   │   ├── app.css
+│   │   └── index.js
+│   └── App.svelte  <-- Your main App component
+├── public/
+│   ├── index.html
+│   └── ...other static assets
+├── package.json
+└── ...other project files
