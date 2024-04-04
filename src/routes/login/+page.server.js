@@ -49,6 +49,6 @@ export const actions = {
     }
 
     // Send user to home after authorisation
-    throw redirect(302, "/all_homes");
+    throw redirect(302, "/");
   },
 };
