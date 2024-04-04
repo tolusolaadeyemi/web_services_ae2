@@ -24,6 +24,21 @@
       {/if}
     </nav>
     <article>
+      <div class="basics">
+        <section>
+          <header>
+            <h1>Find an energy certificate</h1>
+          </header>
+          <p>You can use this service to find an existing:</p>
+          <ul>
+            <li>energy performance certificate (EPC)</li>
+          </ul>
+
+          <p>You can search for a certificate by postcode, street name and town, or certificate number.</p>
+
+          <p>To start using this service, please register or login</p>
+        </section>
+      </div>
       <slot />
     </article>
   </main>
@@ -47,4 +62,5 @@
       justify-content: space-between;
       align-items: center;
     }
+
   </style>
