@@ -14,7 +14,6 @@
         <span>
           <a href="/search">Search EPC</a>
           <a href="/all_homes">All Homes</a>
-          <a href="/house_detail">House Detail Page</a>
           <a href="/tracked">Tracked Homes</a>
         </span>
         {:else}
@@ -32,8 +31,6 @@
     main {
       padding: var(--size-4);
       min-height: 80vh;
-      display: grid;
-      grid-template-rows: 50px 1fr;
     }
     .title {
       font-weight: bold;
@@ -43,6 +40,7 @@
       text-shadow: none;
     }
     nav {
+      font-size: var(--font-size-3);
       display: flex;
       justify-content: space-between;
       align-items: center;

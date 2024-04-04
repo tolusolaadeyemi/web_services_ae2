@@ -1,0 +1,34 @@
+background-colour {
+    background-color: #f3f2f1;
+  }
+
+  body {
+    font-family: Arial, sans-serif; /* specify the main font style of the page */
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+  }
+  /* main { same as for nav, to have the contenst of the article centred, specify the following as previously */
+    /* padding: 20px;
+    max-width: 700px;
+    margin: 0 auto;
+  } */
+  .basics h1 {
+    font-size: 50px;
+    color: #2b2929;
+  }
+
+  h1 {
+    margin: 20px 0;
+  }
+
+  
+article {
+    font-size: 24px;
+    margin-bottom: 20px;
+    line-height: 32px;
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+

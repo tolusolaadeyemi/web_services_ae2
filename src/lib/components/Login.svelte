@@ -61,6 +61,7 @@
     }
     
     input {
+      font-size: var(--font-size-3);
       background-color: white;
       margin-top: var(--size-2);
       border: 1px solid var(--stone-3);
