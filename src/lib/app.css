@@ -1,22 +1,24 @@
-@import "open-props/normalize";
+/* @import "open-props/normalize"; */
 @import "open-props/buttons";
+@import "custom.css";
 
-* {
+/* * {
     box-sizing: border-box;
-}
+} */
 
-body {
+/* body {
     color: var(--stone-10);
-}
+} */
 
-h1,
+
+/* h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
     color: var(--indigo-12);
-}
+} */
 
 a {
     color: var(--indigo-10);

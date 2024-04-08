@@ -20,9 +20,12 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@observablehq/plot": "^0.6.14",
 		"bcrypt": "^5.1.1",
 		"better-sqlite3": "^9.4.3",
+		"install": "^0.13.0",
 		"jsonwebtoken": "^9.0.2",
+		"npm": "^10.5.1",
 		"open-props": "^1.6.21",
 		"postcss-jit-props": "^1.0.14",
 		"zod": "^3.22.4"

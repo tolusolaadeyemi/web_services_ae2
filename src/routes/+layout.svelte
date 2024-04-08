@@ -14,8 +14,8 @@
         <span>
           <a href="/search">Search EPC</a>
           <a href="/all_homes">All Homes</a>
-          <a href="/house_detail">House Detail Page</a>
           <a href="/tracked">Tracked Homes</a>
+          <a href="/plot">Plots</a>
         </span>
         {:else}
         <span>
@@ -32,17 +32,39 @@
     main {
       padding: var(--size-4);
       min-height: 80vh;
-      display: grid;
-      grid-template-rows: 50px 1fr;
+    }
+    
+    button {
+      color: rgb(0, 0, 0);
+      padding: 2px;
+    }
+
+    button:hover {
+      color: rgb(36, 100, 239);
+      padding: 2px;
     }
     .title {
+      color: white;
       font-weight: bold;
       font-size: var(--font-size-4);
     }
     .title:hover {
-      text-shadow: none;
+      color: rgb(36, 100, 239);
     }
+
+    nav a {
+      color: white;
+    }
+
+    nav a:hover{
+      color: rgb(36, 100, 239);
+    }
+
+
     nav {
+      background-color: black;
+      color: white;
+      font-size: var(--font-size-3);
       display: flex;
       justify-content: space-between;
       align-items: center;
