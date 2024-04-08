@@ -47,17 +47,18 @@
       padding: var(--size-3);
       border-radius: var(--size-2);
       box-shadow: var(--shadow-3);
+      margin: 0 auto; /* Center the container horizontally */
+      margin-top: 5vh;
     }
     
     h1 {
       font-size: var(--font-size-3);
-      margin-bottom: var(--size-4);
-      padding-bottom: var(--size-3);
+      margin-bottom: var(--size-3);
     }
     
     form > * {
-      display: block;
-      margin-top: var(--size-2);
+      display:block;
+      margin-top: var(--size-3);
     }
     
     input {

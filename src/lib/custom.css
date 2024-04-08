@@ -24,11 +24,36 @@ background-colour {
 
   
 article {
-    font-size: 24px;
+    /* font-size: 24px;
     margin-bottom: 20px;
     line-height: 32px;
     padding: 20px;
     max-width: 900px;
+    margin: 0 auto; */
+    max-width: 900px;
     margin: 0 auto;
+    /* display: grid; */
+    /* grid-template-columns: 2fr 1fr; */
+    /* grid-column-gap: 20px; */
   }
 
+  body .plot-container {
+    position: relative; /* Change from fixed to relative */
+    /* max-width: 1500px; */
+    width: 100%;
+    height: auto; /* Change height to auto */
+    margin-bottom: 20px; /* Add some margin between plots */
+  }
+  
+  /* Override other styles */
+  body .plot-container > div {
+    width: 100%;
+    height: 100%;
+    max-width: 100%; /* Allow plots to take up full width */
+  }
+
+
+  .plot-container {
+    width: 100%;
+    margin-bottom: 20px; /* Add some space between the plots */
+  }
