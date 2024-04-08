@@ -17,7 +17,15 @@
     if (e.keyCode === 13) search();
   }
 </script>
-
+<div class="filters">
+  <label for="Filtering">Filter by:</label>
+    <select class="filter-select">
+        <option value="">Energy Band</option>
+    </select>
+    <select class="filter-select">
+        <option value="">Property Type</option>
+    </select>
+</div>
 <div class="search">
   <input
     type="text"
