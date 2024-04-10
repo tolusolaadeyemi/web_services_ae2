@@ -6,6 +6,8 @@
 
 <div class="house_detail">
   <section>
+<div class="house_detail">
+  <section>
     <h1>{title}</h1>
 
     <div class="details">

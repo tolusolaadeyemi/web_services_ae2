@@ -1,0 +1,218 @@
+@import "open-props/buttons";
+
+background-colour {
+  background-color: #f3f2f1;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  /* Have the default font size set */
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  padding: 20px;
+}
+
+.basics h1 {
+  font-size: 50px;
+  color: #2b2929;
+}
+
+h1 {
+  margin: 20px 0;
+}
+
+
+article {
+  font-size: 24px;
+  margin-bottom: 20px;
+  line-height: 32px;
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+
+
+/* all homes css */
+body .plot-container {
+  width: 1000px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.filters {
+  margin-bottom: 20px;
+}
+
+.filter-select,
+.sort-select {
+  font-size: 20px;
+  margin-bottom: 10px;
+  /* background-color: #bcd1e4; */
+}
+
+/* House detail css */
+.post {
+  padding: var(--size-3);
+  background-color: var(--indigo-0);
+  border-radius: var(--size-2);
+  border: 1px solid var(--indigo-1);
+  box-shadow: var(--shadow-1);
+  margin-block: var(--size-3);
+}
+
+/* .buttons {
+    margin-top: var(--size-3);
+    display: flex;
+    justify-content: space-between;
+    color:rgba(0, 0, 0, 0.676);
+  } */
+
+.counter {
+  font-size: 0.85rem;
+  color: var(--stone-8);
+}
+
+textarea {
+  width: 100%;
+  box-shadow: var(--inner-shadow-1);
+  background-color: white;
+  margin-top: var(--size-2);
+}
+
+.rating-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.rating-table th,
+.rating-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.rating-table th {
+  background-color: #f2f2f2;
+}
+
+.energy-efficient {
+  background-color: #d4edda;
+}
+
+.higher-cost {
+  background-color: #f8d7da;
+}
+
+/* Login and register */
+
+section {
+  /* display: grid;  since all css is on the same page not necessarily needed */
+  place-items: center;
+  height: 100%;
+}
+
+.register {
+  width: 100%;
+  max-width: 24rem;
+  background-color: var(--stone-3);
+  border: 1px solid var(--stone-3);
+  padding: var(--size-3);
+  border-radius: var(--size-2);
+  box-shadow: var(--shadow-3);
+  margin: 0 auto;
+  margin-top: 5vh;
+}
+
+h1 {
+  font-size: var(--font-size-4);
+  margin-bottom: var(--size-3);
+}
+
+form>* {
+  display: block;
+  margin-top: var(--size-3);
+}
+
+input {
+  font-size: var(--font-size-3);
+  background-color: white;
+  margin-top: var(--size-2);
+  border: 1px solid var(--stone-3);
+  width: 100%;
+}
+
+/* button {
+      margin-top: var(--size-4);
+      margin-left: auto;
+    } */
+
+.error {
+  color: var(--red-8);
+}
+
+/*for tracked homes  */
+.filter-section {
+  margin-bottom: 20px;
+}
+
+
+.filter-by {
+  font-size: 20px;
+  margin-bottom: 10px;
+  /* background-color: #bcd1e4; */
+}
+
+/* homepage and nav */
+
+a {
+  color: var(--indigo-10);
+  text-decoration: none;
+
+  &:hover {
+    text-shadow: 0 0 15px var(--indigo-4);
+  }
+}
+
+button {
+  color: rgba(0, 0, 0, 0.807);
+  padding: 2px;
+  margin: 0 auto;
+}
+
+button:hover {
+  color: rgb(36, 100, 239);
+  padding: 2px;
+}
+
+.title {
+  color: white;
+  font-weight: bold;
+  font-size: var(--font-size-4);
+}
+
+.title:hover {
+  color: rgb(36, 100, 239);
+}
+
+nav a {
+  color: white;
+}
+
+nav a:hover {
+  color: rgb(36, 100, 239);
+}
+
+
+nav {
+  background-color: rgba(0, 0, 0, 0.883);
+  color: white;
+  font-size: var(--font-size-3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
