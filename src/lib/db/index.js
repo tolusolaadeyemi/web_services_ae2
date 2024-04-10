@@ -62,10 +62,24 @@ export async function createUser(user, password) {
     return users_homes;
   }
 
-  export function createNotes(lmk_key, user, notes) {
-    const sql = `INSERT INTO notes (lmk_key, user_username, notes) VALUES ($lmk_key, $user, $notes);`;
+  export function getUserLmk(userUsername) {
+    const sql = `SELECT lmk_key FROM tracked_homes WHERE user_username = ?`;
+    const statement = db.prepare(sql);
+    const rows = statement.all(userUsername);
+    return rows.map(row => row.lmk_key);
+  }
+
+  export function getAllLmk() {
+    const sql = `SELECT lmk_key FROM tracked_homes`;
+    const statement = db.prepare(sql);
+    const rows = statement.all();
+    return rows.map(row => row.lmk_key);
+  }
+
+  export function createNotes(lmk_key, notes, user) {
+    const sql = `INSERT INTO notes (lmk_key, notes, user_username) VALUES ($lmk_key, $notes, $user);`;
     const stmnt = db.prepare(sql);
-    const info = stmnt.run({ lmk_key, user, notes });
+    const info = stmnt.run({ lmk_key, notes, user });
     return info.lastInsertRowid;
   }
   

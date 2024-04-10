@@ -16,7 +16,21 @@
 
 <main>
 
+  <div class="search-page">
+    <h1>EPC Search Page</h1>
+    <div class="filters">
+        <label for="FilterBy">Filter by:</label>
+        <select class="filter-select">
+          <option value="">Energy Band</option>
+        </select>
+        <select class="filter-select">
+          <option value="">Property Type</option>
+        </select>
+    </div>
+  </div>
+
   <div class="search">
+    <label for="search">Search for a property:</label>
     <input type="text" bind:value="{term}"/>
      <button on:click="{search}" class="primary-button">Search</button>
   </div>
@@ -35,34 +49,3 @@
 {/if}
 </main>
 
-<style>
-  main {
-    margin: var(--size-fluid-4);
-  }
-
-  .loading {
-    height: 200px;
-    display: grid;
-    place-items: center;
-  }
-
-  .loader {
-    width: 48px;
-    height: 48px;
-    border: 5px solid var(--teal-2);
-    border-bottom-color: var(--teal-6);
-    border-radius: 50%;
-    display: inline-block;
-    box-sizing: border-box;
-    animation: rotation 1s linear infinite;
-  }
-
-  @keyframes rotation {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-</style>
