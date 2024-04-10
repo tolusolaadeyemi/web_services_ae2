@@ -1,8 +1,8 @@
 <body>
   <main>
     <article>
-      <div>
-        <section class="basics">
+      <div class="basics">
+        <section>
           <header>
             <h1>Find an energy certificate</h1>
           </header>

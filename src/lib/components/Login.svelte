@@ -1,38 +1,38 @@
 <script>
-    export let title;
-    export let button;
-    export let form;
-  </script>
-  
+  export let title;
+  export let button;
+  export let form;
+</script>
+
+<div class="register">
   <section>
-    <div class="register">
-      <h1>{title}</h1>
-  
-      {#if form?.error}
-        <p class="error">{form.error}</p>
-      {/if}
-  
-      <form method="POST">
-        <label
-          >Username
-          <div>
-            <input type="text" name="username" />
-          </div>
-        </label>
-  
-        <label
-          >Password
-          <div>
-            <input type="password" name="password" />
-          </div>
-        </label>
-  
-        <button type="submit">{button}</button>
-      </form>
-    </div>
+    <h1>{title}</h1>
+
+    {#if form?.error}
+      <p class="error">{form.error}</p>
+    {/if}
+
+    <form method="POST">
+      <label
+        >Username
+        <div>
+          <input type="text" name="username" />
+        </div>
+      </label>
+
+      <label
+        >Password
+        <div>
+          <input type="password" name="password" />
+        </div>
+      </label>
+
+      <button type="submit">{button}</button>
+    </form>
   </section>
-  
-  <style>
+</div>
+
+<!-- <style>
     section {
       display: grid;
       place-items: center;
@@ -77,4 +77,4 @@
     .error {
       color: var(--red-8);
     }
-  </style>
+  </style> -->

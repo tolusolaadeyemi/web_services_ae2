@@ -1,33 +1,34 @@
 <script>
-    import "$lib/app.css";
-    export let data;
-    console.log('coming from layout', data);
-  </script>
-  
-  <main>
-    <nav>
-      <a class="title" href="/">Homepage</a>
-      {#if data.user}
-        <form method="POST" action="?/logout">
-          <button type="submit">{data.user} - log out</button>
-        </form>
-        <span>
-          <a href="/search">Search EPC</a>
-          <a href="/all_homes">All Homes</a>
-          <a href="/tracked">Tracked Homes</a>
-          <a href="/plot">Plots</a>
-        </span>
-        {:else}
-        <span>
-          <a href="/login">Login</a> or <a href="/register">register</a> for an account
-        </span>
-      {/if}
-    </nav>
-    <article>
-      <slot />
-    </article>
-  </main>
-  
+  // import "$lib/app.css";
+  import "$lib/custom.css";
+  export let data;
+  console.log("coming from layout", data);
+</script>
+
+<main>
+  <nav>
+    <a class="title" href="/">Homepage</a>
+    {#if data.user}
+      <form method="POST" action="?/logout">
+        <button type="submit">{data.user} - log out</button>
+      </form>
+      <span>
+        <a href="/search">Search EPC</a>
+        <a href="/all_homes">All Homes</a>
+        <a href="/tracked">Tracked Homes</a>
+        <a href="/house_detail/">House_detail</a>
+      </span>
+    {:else}
+      <span>
+        <a href="/login">Login</a> or <a href="/register">register</a> for an account
+      </span>
+    {/if}
+  </nav>
+  <article>
+    <slot />
+  </article>
+</main>
+<!--   
   <style>
     main {
       padding: var(--size-4);
@@ -69,4 +70,4 @@
       justify-content: space-between;
       align-items: center;
     }
-  </style>
+  </style> -->
