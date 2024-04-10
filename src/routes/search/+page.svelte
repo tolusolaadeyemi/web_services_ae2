@@ -1,6 +1,5 @@
 <script>
   import HouseGrid from "$lib/components/HouseGrid.svelte";
-  import HouseDetail from "$lib/components/HouseDetail.svelte";
   let homes;
   let term = "";
 

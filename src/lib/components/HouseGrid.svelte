@@ -1,6 +1,5 @@
 <script>
  import { beforeUpdate, createEventDispatcher } from 'svelte';
- import HouseDetail from './HouseDetail.svelte';
  export let homes;
 
  beforeUpdate(() => {
@@ -8,7 +7,6 @@
          window.scrollTo({ top: 0, behavior: "smooth" });
      }
  });
-
 </script>
 
 <ul>
@@ -17,6 +15,7 @@
             <p>{home.address1}</p>
             <p>{home.postcode}</p>
             <small>{home.constituency}</small>
+            <button><a href="/house_detail/{home.lmk}">House Detail</a></button>
         </li>
     {/each}
 </ul>

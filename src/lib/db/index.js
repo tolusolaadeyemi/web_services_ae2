@@ -9,23 +9,16 @@ process.on("SIGINT", () => process.exit(128 + 2));
 process.on("SIGTERM", () => process.exit(128 + 15));
 
 export function getTrackedHomes() {
-  const sql = `select rowid, * from tracked_homes order by time desc`;
+  const sql = `select rowid, * from tracked_homes order by updated_at desc`;
   const stmnt = db.prepare(sql);
   const rows = stmnt.all();
   return rows;
 }
 
-export function getHouseDetail(rowid) {
-  const sql = `select rowid, * from tracked_homes where rowid = $rowid`;
+export function trackHome(lmk_key, stage,  user_username) {
+  const sql = `INSERT INTO tracked_homes (lmk_key, stage, user_username) VALUES ($lmk_key, $stage,$user_username);`;
   const stmnt = db.prepare(sql);
-  const home = stmnt.get({ rowid });
-  return home;
-}
-
-export function trackHome(home_link, state, epc_band, potential_improvement, notes, stage, user_username) {
-  const sql = `INSERT INTO tracked_homes (home_link, state, epc_band, potential_improvement, notes, stage, user_username) VALUES ($home_link, $state, $epc_band, $potential_improvement, $notes, $stage, $user_username);`;
-  const stmnt = db.prepare(sql);
-  const info = stmnt.run({ home_link, state, epc_band, potential_improvement, notes, stage, user_username });
+  const info = stmnt.run({ lmk_key, stage, user_username });
   return info.lastInsertRowid;
 }
 
@@ -67,5 +60,12 @@ export async function createUser(user, password) {
     const stmnt = db.prepare(sql);
     const users_homes = stmnt.all({ user });
     return users_homes;
+  }
+
+  export function createNotes(lmk_key, user, notes) {
+    const sql = `INSERT INTO notes (lmk_key, user_username, notes) VALUES ($lmk_key, $user, $notes);`;
+    const stmnt = db.prepare(sql);
+    const info = stmnt.run({ lmk_key, user, notes });
+    return info.lastInsertRowid;
   }
   
