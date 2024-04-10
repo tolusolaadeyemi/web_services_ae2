@@ -1,17 +1,20 @@
 <script>
   export let title;
-  export let data;
-  export let house_detail;
+  import Compose from "$lib/components/Compose.svelte";
 </script>
 
-<section>
-  <div class="house_detail">
+<div class="house_detail">
+  <section>
     <h1>{title}</h1>
-  </div>
-  <div class="details">
-    <div class="metadata">
-      {data.user}
-      <a href="/house_detail/{house_detail.rowid}">Detail Page</a>
+
+    <div class="details">
+      <div class="metadata">
+        <!-- {data.user} -->
+        <!-- <a href="/house_detail/{house_detail.epcid}">Detail Page</a> -->
+      </div>
     </div>
-  </div>
-</section>
+    <div id="notes">
+      <Compose />
+    </div>
+  </section>
+</div>
