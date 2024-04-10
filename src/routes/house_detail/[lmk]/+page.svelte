@@ -1,20 +1,38 @@
 <script>
-  import HouseDetail from "$lib/components/HouseDetail.svelte";
   export let data;
-
-  // console.log(data)
+  let value="";
 
   const home = data.data;
-  // console.log(home)
   const current = home[0]["current-energy-efficiency"];
   const potential = home[0]["potential-energy-efficiency"];
-
-  console.log(current, potential);
+  const constituency = home[0]["constituency"];
+  const address1 = home[0]["address1"];
+  const postcode = home[0]["postcode"];
+  const lmk = home[0]["lmk-key"];
 </script>
 
 {#if data.data}
   <!-- {data.data} -->
   <div class="epc_table">
+    <section>
+      <!-- https://www.w3.org/TR/html401/struct/tables.html for the creation of the table -->
+      <table class="rating-table">
+        <thead>
+          <tr>
+            <th>Constituency</th>
+            <th>Address</th>
+            <th>Postcode</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="energy-efficient">
+            <td>{constituency}</td>
+            <td>{address1} </td>
+            <td>{postcode} </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
     <section>
       <!-- https://www.w3.org/TR/html401/struct/tables.html for the creation of the table -->
       <table class="rating-table">
@@ -70,9 +88,40 @@
         </tbody>
       </table>
     </section>
+    <div>
+       <form method="POST" action="?/create">
+        <input type="hidden" name="lmk_key" value="{lmk}">
+            <input list="stage">
+            <select name="stage" id="stage">
+              <option value="initial_assessment">Initial Assessment</option>
+              <option value="upgrades_identified">Upgrades Identified</option>
+              <option value="work_started">Work Started</option>
+              <option value="completed">Completed</option>
+              </select>
+            <button type="submit"> Track Home</button>
+      </form>
+    </div>
+    <div id="notes">
+        <section>
+          <form method="POST" action="?/create_note">
+            <input type="hidden" name="lmk_key" value="{lmk}">
+            <textarea
+              name="notes"
+              rows="5"
+              maxlength="120"
+              bind:value="{value}"
+              placeholder="Add a Note on this House"
+            ></textarea>
+      
+            <div class="buttons">
+              <span class="counter">{value.length}/120</span>
+              <input type="submit" value="Add Note" />
+            </div>
+          </form>
+        </section>
+      </div>
   </div>
 
-  <HouseDetail title="House Detail Page" />
 {:else}
   House Not found
 {/if}

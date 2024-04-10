@@ -7,15 +7,19 @@ export async function load({ params, locals }) {
 }
 
 export const actions = {
-  //   create: async ({ request, locals }) => {
-  //     const data = await request.formData();
-  //     const text = data.get("text");
+    create: async ({ request, locals }) => {
+      const data = await request.formData();
+      const lmk_key = data.get("lmk_key");
+      const state = data.get("state");
+      const epc_band = data.get("epc_band");
+      const potential_improvement = data.get("potential_improvement");
+      const stage = data.get("stage");
 
-  //     // Create the toot if we have text
-  //     if (locals?.id && text) {
-  //       createToot(locals.id, text);
-  //     }
-  //   },
+      //track the home if we have a key
+      if (locals?.id && lmk_key) {
+        trackHome(lmk_key, state, epc_band, potential_improvement, stage, locals.id);
+      }
+    },
   logout: async ({ cookies, locals }) => {
     cookies.set("Token", "Bearer ", { path: "/", maxAge: 0 });
     throw redirect(302, "/");

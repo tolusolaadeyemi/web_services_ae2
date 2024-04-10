@@ -21,13 +21,12 @@ export async function GET({ url, cookies }) {
         const lmk_key = r['lmk-key'];
         if (lmk_key) {
             return {
+                lmk : r['lmk-key'],
                 constituency: r?.constituency,
                 address1: r?.address1,
-                postcode: r?.postcode,
-                currentEnergyRating: r["current-energy-rating"]
+                postcode: r?.postcode
             };
         }
     });
-
     return new Response(JSON.stringify(_homes));
 }
