@@ -35,7 +35,7 @@ export const actions = {
       });
 
       // Set Cookie
-      cookies.set("Token", `Bearer ${token}`, {
+      cookies.set("Token", token, {
         httpOnly: true,
         secure: true,
         sameSite: "strict",
@@ -49,6 +49,6 @@ export const actions = {
     }
 
     // Send user to home after authorisation
-    throw redirect(302, "/");
+    throw redirect(302, "/all_homes");
   },
 };

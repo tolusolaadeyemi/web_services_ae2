@@ -2,11 +2,9 @@ import jwt from "jsonwebtoken";
 import { getUser } from "$lib/db";
 
 export async function handle({ event, resolve }) {
-  const authCookie = event.cookies.get("Token");
+  const token = event.cookies.get("Token");
 
-  if (authCookie) {
-    const token = authCookie.split(" ")[1];
-
+  if (token) {
     try {
       // Verify JWT
       const jwtUser = jwt.verify(token, process.env.JWT_TOKEN);
@@ -19,7 +17,7 @@ export async function handle({ event, resolve }) {
       event.locals.id = jwtUser?.id;
     } catch (error) {
       console.log("JWT Error:", error);
-      event.cookies.set("Token", "Bearer ", { path: "/", maxAge: 0 });
+      event.cookies.set("Token", "", { path: "/", maxAge: 0 });
       delete event.locals.id;
     }
   }
