@@ -1,7 +1,6 @@
 <script>
     import "$lib/app.css";
     export let data;
-    console.log('coming from layout', data);
   </script>
   
   <main>
