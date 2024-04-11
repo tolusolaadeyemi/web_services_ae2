@@ -47,16 +47,14 @@ export async function createUser(user, password) {
     const stmnt = db.prepare(sql);
     try {
       const info = stmnt.run({ user: _user, password: hash });
-      console.log(info);
       return info;
     } catch (error) {
-      console.log(error);
       throw new Error("Could not make user");
     }
   }
   
   export function getUserHomes(user) {
-    const sql = `SELECT rowid, * FROM tracked_homes WHERE user_username = $user;`;
+    const sql = `SELECT * FROM tracked_homes WHERE user_username = $user;`;
     const stmnt = db.prepare(sql);
     const users_homes = stmnt.all({ user });
     return users_homes;
@@ -74,6 +72,13 @@ export async function createUser(user, password) {
     const statement = db.prepare(sql);
     const rows = statement.all();
     return rows.map(row => row.lmk_key);
+  }
+
+  export function getAllHomes() {
+    const sql = `SELECT * FROM tracked_homes`;
+    const statement = db.prepare(sql);
+    const all_homes = statement.all();
+    return all_homes;
   }
 
   export function createNotes(lmk_key, notes, user) {

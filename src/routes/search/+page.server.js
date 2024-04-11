@@ -10,3 +10,10 @@ export const load = async (event) => {
     return { user: event.locals.id };
   }
 };
+
+export const actions = {
+  logout: async ({ cookies, locals }) => {
+   cookies.set("Token", "Bearer ", { path: "/", maxAge: 0 });
+   throw redirect(302, "/");
+ },
+};

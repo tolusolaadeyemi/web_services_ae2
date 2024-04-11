@@ -1,8 +1,6 @@
 <script>
   // import AllHomes from "$lib/components/AllHomes.svelte";
   export let data;
-
-  // console.log(data);
   import Plot from "$lib/components/Plot.svelte"; // import the plot component that was created for visualisations
   import { onMount } from "svelte"; // import on Mount method ffrom svelte
   import * as PlotLibrary from "@observablehq/plot"; // Since the Plot component iis called plot, chose PlotLibrary as name under which observable is imported
@@ -15,7 +13,6 @@
   // Load data on mount
   onMount(async () => {
     fetchedData = data.data;
-    console.log(fetchedData);
 
     const propertyTypeColumn = fetchedData.map((row) => row[0]["property-type"]); // get the correct data with map function for each of the plots
     const tenureColumn = fetchedData.map((row) => row[0]["tenure"]);
@@ -23,11 +20,11 @@
       (row) => row[0]["construction-age-band"],
     );
     // debugging statement
-    console.log({
-      propertyTypeColumn,
-      tenureColumn,
-      constructionAgeBandColumn,
-    });
+    // console.log({
+    //   propertyTypeColumn,
+    //   tenureColumn,
+    //   constructionAgeBandColumn,
+    // });
     // get the counts of of ocurrences of the different property types in the data and convert into an array
     const propertyTypeCounts = {};
     propertyTypeColumn.forEach((propertyType) => {

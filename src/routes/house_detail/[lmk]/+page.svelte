@@ -9,7 +9,6 @@
   const address1 = home[0]["address1"];
   const postcode = home[0]["postcode"];
   const lmk = home[0]["lmk-key"];
-  console.log(lmk)
 </script>
 <div class="house-detail">
   <h1>House Detail Page</h1>

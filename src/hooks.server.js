@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import jwt from "jsonwebtoken";
 import { getUser } from "$lib/db";
 

@@ -2,11 +2,17 @@
   import HouseGrid from "$lib/components/HouseGrid.svelte";
   let homes;
   let term = "";
+  let filter ="";
+  let response
 
 
 
   async function search() {
-    const response = await fetch(`/api/search?q=${term}`);
+    if(filter){
+      response = await fetch(`/api/search?f=${filter}&q=${term}`);
+    }else{
+      response = await fetch(`/api/search?f=postcode&q=${term}`);
+    }
     const results = await response.json();
     homes = results;
   }
@@ -20,11 +26,9 @@
     <h1>EPC Search Page</h1>
     <div class="filters">
         <label for="FilterBy">Filter by:</label>
-        <select class="filter-select">
-          <option value="">Energy Band</option>
-        </select>
-        <select class="filter-select">
-          <option value="">Property Type</option>
+        <select class="filter-select" bind:value="{filter}">
+          <option value="energy-band">Energy Band</option>
+          <option value="property-type">Property Type</option>
         </select>
     </div>
   </div>
