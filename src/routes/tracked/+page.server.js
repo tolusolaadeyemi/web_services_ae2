@@ -1,3 +1,5 @@
+import 'dotenv/config'
+import { redirect } from "@sveltejs/kit";
 import { getUserLmk } from '$lib/db';
 
 export async function load({ locals }) {
@@ -8,9 +10,8 @@ export async function load({ locals }) {
     // Extract the user ID from the locals object
     const userUsername = locals?.id;
     const lmkKeys = getUserLmk(userUsername);
-    console.log(lmkKeys);
   
-    const token = "bmMzMjM2cGd0QHN0dWRlbnRzLm51bG9uZG9uLmFjLnVrOmM2ODU0NThhM2EyZGY2ZDI4YzRlNmQwN2FjY2U0NDRkNDViZGU1Mjk=";
+    const token = process.env.EPC_TOKEN;
   
     // Array to store fetched data for each lmk_key
     const data = [];
@@ -34,3 +35,10 @@ export async function load({ locals }) {
   
     return { data };
   }
+
+  export const actions = {
+    logout: async ({ cookies, locals }) => {
+     cookies.set("Token", "Bearer ", { path: "/", maxAge: 0 });
+     throw redirect(302, "/");
+   },
+ };

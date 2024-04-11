@@ -1,10 +1,9 @@
-export async function GET({ url, cookies }) {
-    console.log(cookies.get('Token'))
-    //verify token and return error if token is wrong
+import 'dotenv/config'
+export async function GET({ url}) {
+    let filter = url.searchParams.get('f') || "";
     let term = url.searchParams.get('q') || "";
 
-    const token =
-    "dHMzMjIwcGd0QHN0dWRlbnRzLm51bG9uZG9uLmFjLnVrOjU0NzYzZGYwNTk4YmY1YWU4MGM4ZDMxN2QwZGMxNWI5NGQ2YmFhZmM=";
+    const token = process.env.EPC_TOKEN;
 
     const headers = {
         headers: {
@@ -13,7 +12,7 @@ export async function GET({ url, cookies }) {
         },
     };
 
-    const response = await fetch(`https://epc.opendatacommunities.org/api/v1/domestic/search?postcode=${term}&size=100&from=100`, headers);
+    const response = await fetch(`https://epc.opendatacommunities.org/api/v1/domestic/search?${filter}=${term}&size=100&from=100`, headers);
     const results = await response.json();
 
     const rows = results?.rows || [];
@@ -24,7 +23,9 @@ export async function GET({ url, cookies }) {
                 lmk : r['lmk-key'],
                 constituency: r?.constituency,
                 address1: r?.address1,
-                postcode: r?.postcode
+                postcode: r?.postcode,
+                energyBand: r["current-energy-rating"],
+                propertyType: r["property-type"]
             };
         }
     });

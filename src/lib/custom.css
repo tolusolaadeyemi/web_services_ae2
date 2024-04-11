@@ -253,6 +253,10 @@ nav {
   align-items: center;
 }
 
+nav button {
+  background-color: white;
+}
+
 /* Responsive styles */
 @media screen and (max-width: 768px) {
   .title {

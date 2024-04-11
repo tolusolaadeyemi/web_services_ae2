@@ -11,7 +11,6 @@
         term: term,
       });
     }
-    console.log(term)
   }
 
   function key(e) {

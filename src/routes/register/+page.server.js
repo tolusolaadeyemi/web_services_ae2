@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import { redirect, fail } from "@sveltejs/kit";
 import jwt from "jsonwebtoken";
 import { z } from "zod";

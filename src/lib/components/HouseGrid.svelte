@@ -14,6 +14,8 @@
         <li>
             <p>{home.address1}</p>
             <p>{home.postcode}</p>
+            <p>{home.energyBand}</p>
+            <p>{home.propertyType}</p>
             <small>{home.constituency}</small>
             <button class="redirect_detail"><a href="/house_detail/{home.lmk}">House Detail</a></button>
         </li>

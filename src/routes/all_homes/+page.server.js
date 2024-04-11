@@ -1,31 +1,13 @@
-// import {getTrackedHomes} from "$lib/db/index.js";
-
-// export async function load({ params }) {
-//   // Fetch data from the API
-//   const token = "bmMzMjM2cGd0QHN0dWRlbnRzLm51bG9uZG9uLmFjLnVrOmM2ODU0NThhM2EyZGY2ZDI4YzRlNmQwN2FjY2U0NDRkNDViZGU1Mjk="; // Please input the in the project specified token in here
-//   const response = await fetch('https://epc.opendatacommunities.org/api/v1/domestic/search?&size=100', {
-//     headers: {
-//       'Authorization': `Basic ${token}`,
-//       'Accept': 'application/json'
-//     }
-//   });
-//   const data = await response.json();
-//   return { data: data["rows"] };
-// }
-//   getTrackedHomes() must be implemented for the link and fetch the data from the link in the db
-
-// const trackedHomes = getTrackedHomes();
-// console.log(trackedHomes);
-
+import 'dotenv/config'
+import { redirect } from "@sveltejs/kit";
 import { getAllLmk } from '$lib/db';
-
   
   export async function load({ params }) {
+  //call this function to display username and stage along with homes
+ 
     // Extract the user ID from the locals object
-    const lmkKeys = getAllLmk();
-    console.log(lmkKeys);
-  
-    const token = "bmMzMjM2cGd0QHN0dWRlbnRzLm51bG9uZG9uLmFjLnVrOmM2ODU0NThhM2EyZGY2ZDI4YzRlNmQwN2FjY2U0NDRkNDViZGU1Mjk=";
+    const lmkKeys = getAllLmk(); 
+    const token = process.env.EPC_TOKEN;
   
     // Array to store fetched data for each lmk_key
     const data = [];
@@ -49,3 +31,10 @@ import { getAllLmk } from '$lib/db';
   
     return { data };
   }
+
+  export const actions = {
+   logout: async ({ cookies, locals }) => {
+    cookies.set("Token", "Bearer ", { path: "/", maxAge: 0 });
+    throw redirect(302, "/");
+  },
+};
