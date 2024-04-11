@@ -38,11 +38,6 @@ article {
 
 
 /* all homes css */
-body .plot-container {
-  width: 1000px;
-  margin: 0 auto;
-  margin-bottom: 20px;
-}
 
 .filters {
   margin-bottom: 20px;
@@ -52,29 +47,41 @@ body .plot-container {
 .sort-select {
   font-size: 20px;
   margin-bottom: 10px;
-  /* background-color: #bcd1e4; */
 }
 
+.list-all {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  gap: 20px; 
+  list-style: none;
+  padding: 0;
+}
+
+.list-all li {
+  padding: 20px;
+  border: 1px solid #ccc; 
+}
+
+.list-all li p {
+  margin: 0; 
+}
 /* House detail css */
-.post {
-  padding: var(--size-3);
-  background-color: var(--indigo-0);
-  border-radius: var(--size-2);
-  border: 1px solid var(--indigo-1);
-  box-shadow: var(--shadow-1);
-  margin-block: var(--size-3);
+
+input[type="submit"]:hover { 
+  background-color: #d4edda;
 }
 
-/* .buttons {
-    margin-top: var(--size-3);
-    display: flex;
-    justify-content: space-between;
-    color:rgba(0, 0, 0, 0.676);
-  } */
+.notes {
+  padding: var(--size-3);
+  background-color: var(--indigo-1);
+  border-radius: var(--size-1);
+  box-shadow: var(--shadow-1);
+  margin-block: var(--size-2);
+}
 
 .counter {
   font-size: 0.85rem;
-  color: var(--stone-8);
+  color: var(--stone-10);
 }
 
 textarea {
@@ -84,23 +91,35 @@ textarea {
   margin-top: var(--size-2);
 }
 
+.epc_table {
+  display: grid;
+  grid-template-columns: 1fr; /* Display sections in a single column */
+  gap: 20px;
+}
+
 .rating-table {
+  width: 100%; 
   border-collapse: collapse;
-  width: 100%;
 }
 
 .rating-table th,
 .rating-table td {
-  border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
+  border-top: 1px solid #0f0101c6;
+  border-bottom: 1px solid #0f0101c6;
 }
+
 
 .rating-table th {
   background-color: #f2f2f2;
 }
 
 .energy-efficient {
+  background-color: #d4d7ed;
+}
+
+.lower-cost {
   background-color: #d4edda;
 }
 
@@ -108,10 +127,16 @@ textarea {
   background-color: #f8d7da;
 }
 
+@media screen and (max-width: 768px) {
+  .rating-table th,
+  .rating-table td {
+    font-size: 14px;
+  }
+}
+
 /* Login and register */
 
 section {
-  /* display: grid;  since all css is on the same page not necessarily needed */
   place-items: center;
   height: 100%;
 }
@@ -146,10 +171,6 @@ input {
   width: 100%;
 }
 
-/* button {
-      margin-top: var(--size-4);
-      margin-left: auto;
-    } */
 
 .error {
   color: var(--red-8);
@@ -164,9 +185,24 @@ input {
 .filter-by {
   font-size: 20px;
   margin-bottom: 10px;
-  /* background-color: #bcd1e4; */
 }
 
+.tracked-homes-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  gap: 20px; 
+  list-style: none;
+  padding: 0;
+}
+
+.tracked-homes-list li {
+  padding: 20px;
+  border: 1px solid #ccc; 
+}
+
+.tracked-homes-list li p {
+  margin: 0;
+}
 /* homepage and nav */
 
 a {
@@ -216,3 +252,90 @@ nav {
   justify-content: space-between;
   align-items: center;
 }
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: var(--font-size-3);
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: flex-start; 
+    padding: 10px;
+  }
+
+  nav a {
+    margin-bottom: 10px;
+  }
+}
+
+/* search page */
+  .primary-button:hover {
+    text-shadow: 0 0 5px var(--indigo-2);
+  }
+  .loading {
+    height: 200px;
+    display: grid;
+    place-items: center;
+  }
+  
+  .loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid var(--teal-2);
+    border-bottom-color: var(--teal-6);
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+  }
+
+
+  /* house grid */
+
+ ul {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+     gap: var(--size-4);
+     list-style: none;
+     padding: 0;
+     margin-top: var(--size-8);
+ }
+
+ li {
+     margin-bottom: var(--size-4);
+     padding: 20px;
+     border: 1px solid #ccc; 
+ }
+
+ button {
+     background-size: cover !important;
+     background-position: center !important;
+     box-shadow: var(--shadow-3);
+ }
+
+ .redirect_detail a {
+  color:rgba(0, 0, 0, 0.807) ;
+ }
+
+ .redirect_detail a:hover {
+  color:rgb(36, 100, 239) ;
+ }
+
+ small {
+     padding-inline: var(--size-2);
+     border-width: var(--border-size-1);
+     border-radius: var(--radius-round);
+     border-style: solid;
+ }
+
+ p {
+     font-size: var(--font-size-3);
+     margin-top: var(--size-2);
+     margin-bottom: var(--size-2);
+     color: var(--teal-12);
+ }
+
+ 
+

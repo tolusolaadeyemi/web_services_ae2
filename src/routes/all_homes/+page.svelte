@@ -1,5 +1,5 @@
 <script>
-  import AllHomes from "$lib/components/AllHomes.svelte";
+  // import AllHomes from "$lib/components/AllHomes.svelte";
   export let data;
 
   // console.log(data);
@@ -17,10 +17,10 @@
     fetchedData = data.data;
     console.log(fetchedData);
 
-    const propertyTypeColumn = fetchedData.map((row) => row["property-type"]); // get the correct data with map function for each of the plots
-    const tenureColumn = fetchedData.map((row) => row["tenure"]);
+    const propertyTypeColumn = fetchedData.map((row) => row[0]["property-type"]); // get the correct data with map function for each of the plots
+    const tenureColumn = fetchedData.map((row) => row[0]["tenure"]);
     const constructionAgeBandColumn = fetchedData.map(
-      (row) => row["construction-age-band"],
+      (row) => row[0]["construction-age-band"],
     );
     // debugging statement
     console.log({
@@ -74,7 +74,7 @@
         constructionAgeBand === "England and Wales: 1996-2002" ||
         constructionAgeBand === "England and Wales: 2003-2006" ||
         constructionAgeBand === "England and Wales: 2007-2011" ||
-        constructionAgeBand === "2012" ||
+        constructionAgeBand === "England and Wales: 2012 onwards" ||
         constructionAgeBand === "2013" ||
         constructionAgeBand === "2014" ||
         constructionAgeBand === "2015" ||
@@ -144,11 +144,7 @@
       return item["construction-age-band"].split(":").pop().trim();
     });
     plotConstructionAgeBand = PlotLibrary.plot({
-      marks: [
-        PlotLibrary.axisX({
-          label: "Construction Age Bands", // Set an empty string as the label for the x-axis
-          tickFormat: () => "", // Hide the x-axis tick values
-        }),
+      marks: [ 
         PlotLibrary.barY(plotConstructionAgeBandData, {
           x: years,
           y: "count",
@@ -164,11 +160,62 @@
   });
 </script>
 
-<!-- display the component all homes that was imported -->
-<AllHomes />
+<main>
+  <!-- Create a div for the all homes -->
+  <div class="all_homes">
+    <section>
+      <header>
+      <h1>All Homes</h1>
+    </header>
+    <p>This page displays all the homes that are stored in the database, regardless of the users tracking them.</p>
+
+      <!-- create a div for the filters -->
+      <div class="filters">
+        <!-- There is a label and a value for the filter -->
+        <label for="FilterBy">Filter by:</label>
+        <select class="filter-select">
+          <!-- The value for this filter is state -->
+          <option value="">State</option>
+        </select>
+        <select class="filter-select">
+          <!--  the value for this filter is the Construction Age Band -->
+          <option value="">Band</option>
+        </select>
+        <select class="filter-select">
+          <!--  the Potential Improvement -->
+          <option value="">Potential Improvement</option>
+        </select>
+        <select class="filter-select">
+          <!-- And the filter on the users that are tracking the homes -->
+          <option value="">User Tracking</option>
+        </select>
+      </div>
+
+      <div class="sorting">
+        <label for="sortBy">Sort by:</label>
+        <select id="sortBy" class="sort-select">
+          <option value="dateAdded">Date Added</option>
+          <option value="lastUpdate">Last Update</option>
+        </select>
+      </div>
+
+      <div class="list-all">
+      <ul>
+        {#each data.data as home}
+        <li>
+          <div>
+            <p>Address: {home[0].address1}, {home[0].posttown}, {home[0].postcode}</p>
+            <p>EPC Rating: {home[0]["current-energy-rating"]}</p>
+          </div>
+        </li>
+        {/each}
+      </ul>
+    </div>
+    </section>
+  </div>
+</main>
 
 {#if fetchedData}
-  <!-- If the data was successfully fetched, the plots should be displayed from the Plot component and the creation on this page -->
   <div class="plot-container">
     <h2>Property Type</h2>
     <Plot plotPropertyType="{plotPropertyType}" />
@@ -179,11 +226,7 @@
   </div>
   <div class="plot-container">
     <h2>Construction Age Bands</h2>
-    <Plot
-      plotConstructionAgeBand="{plotConstructionAgeBand}"
-      width="{1000}"
-      height="{1000}"
-    />
+    <Plot plotConstructionAgeBand="{plotConstructionAgeBand}"/>
   </div>
 {:else}
   <p>Loading...</p>

@@ -9,10 +9,12 @@
   const address1 = home[0]["address1"];
   const postcode = home[0]["postcode"];
   const lmk = home[0]["lmk-key"];
+  console.log(lmk)
 </script>
-
+<div class="house-detail">
+  <h1>House Detail Page</h1>
+</div>
 {#if data.data}
-  <!-- {data.data} -->
   <div class="epc_table">
     <section>
       <!-- https://www.w3.org/TR/html401/struct/tables.html for the creation of the table -->
@@ -44,6 +46,11 @@
           </tr>
         </thead>
         <tbody>
+          <tr class="lower-cost">
+          <td>very energy efficient - lower running costs</td>
+          <td></td>
+          <td></td>
+        </tr>
           <tr class="energy-efficient">
             <td>(92+) A</td>
             <td>{current >= 92 ? current : ""}</td>
@@ -81,16 +88,18 @@
             <td>{potential >= 1 && potential <= 20 ? potential : ""}</td>
           </tr>
           <tr class="higher-cost">
-            <td>Not energy efficient - Higher running costs</td>
+            <td>not energy efficient - higher running costs</td>
             <td></td>
             <td></td>
           </tr>
         </tbody>
       </table>
     </section>
-    <div>
+    <div id="add_home">
+      <section>
        <form method="POST" action="?/create">
         <input type="hidden" name="lmk_key" value="{lmk}">
+        <label for="stage">Stage:</label>
             <input list="stage">
             <select name="stage" id="stage">
               <option value="initial_assessment">Initial Assessment</option>
@@ -100,8 +109,9 @@
               </select>
             <button type="submit"> Track Home</button>
       </form>
+    </section>
     </div>
-    <div id="notes">
+    <div class="notes" id="notes">
         <section>
           <form method="POST" action="?/create_note">
             <input type="hidden" name="lmk_key" value="{lmk}">

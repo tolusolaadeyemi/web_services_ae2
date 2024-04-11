@@ -1,5 +1,5 @@
-<script>
-  import AllHomes from "$lib/components/AllHomes.svelte";
+<!-- <script>
+  // import AllHomes from "$lib/components/AllHomes.svelte";
   import Homepage from "$lib/components/Homepage.svelte";
 
   export let data;
@@ -10,4 +10,4 @@
   <AllHomes />
 {:else}
   <Homepage />
-{/if}
+{/if} -->
