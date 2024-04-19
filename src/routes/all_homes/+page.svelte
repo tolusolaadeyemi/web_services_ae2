@@ -14,7 +14,9 @@
   onMount(async () => {
     fetchedData = data.data;
 
-    const propertyTypeColumn = fetchedData.map((row) => row[0]["property-type"]); // get the correct data with map function for each of the plots
+    const propertyTypeColumn = fetchedData.map(
+      (row) => row[0]["property-type"],
+    ); // get the correct data with map function for each of the plots
     const tenureColumn = fetchedData.map((row) => row[0]["tenure"]);
     const constructionAgeBandColumn = fetchedData.map(
       (row) => row[0]["construction-age-band"],
@@ -141,7 +143,7 @@
       return item["construction-age-band"].split(":").pop().trim();
     });
     plotConstructionAgeBand = PlotLibrary.plot({
-      marks: [ 
+      marks: [
         PlotLibrary.barY(plotConstructionAgeBandData, {
           x: years,
           y: "count",
@@ -162,9 +164,12 @@
   <div class="all_homes">
     <section>
       <header>
-      <h1>All Homes</h1>
-    </header>
-    <p>This page displays all the homes that are stored in the database, regardless of the users tracking them.</p>
+        <h1>All Homes</h1>
+      </header>
+      <p>
+        This page displays all the homes that are stored in the database,
+        regardless of the users tracking them.
+      </p>
 
       <!-- create a div for the filters -->
       <div class="filters">
@@ -197,17 +202,20 @@
       </div>
 
       <div class="list-all">
-      <ul>
-        {#each data.data as home}
-        <li>
-          <div>
-            <p>Address: {home[0].address1}, {home[0].posttown}, {home[0].postcode}</p>
-            <p>EPC Rating: {home[0]["current-energy-rating"]}</p>
-          </div>
-        </li>
-        {/each}
-      </ul>
-    </div>
+        <ul>
+          {#each data.data as home}
+            <li>
+              <a href="/house_detail/{home[0]['lmk-key']}">
+                <p>
+                  Address: {home[0].address1}, {home[0].posttown}, {home[0]
+                    .postcode}
+                </p>
+                <p>EPC Rating: {home[0]["current-energy-rating"]}</p>
+              </a>
+            </li>
+          {/each}
+        </ul>
+      </div>
     </section>
   </div>
 </main>
@@ -223,7 +231,7 @@
   </div>
   <div class="plot-container">
     <h2>Construction Age Bands</h2>
-    <Plot plotConstructionAgeBand="{plotConstructionAgeBand}"/>
+    <Plot plotConstructionAgeBand="{plotConstructionAgeBand}" />
   </div>
 {:else}
   <p>Loading...</p>
