@@ -1,4 +1,3 @@
-
 <script>
   export let data;
 </script>
@@ -23,23 +22,26 @@
           <option value="">Potential Improvement</option>
         </select>
       </div>
-        <div class="tracked-homes">
-          <section>
-            <div class="tracked-homes-list">
-              <ul>
-                {#each data.data as home}
+      <div class="tracked-homes">
+        <section>
+          <div class="tracked-homes-list">
+            <ul>
+              {#each data.data as home}
                 <li>
-                  <div>
-                    <p>Address: {home[0].address1}, {home[0].posttown}, {home[0].postcode}</p>
+                  <a href="/house_detail/{home[0]['lmk-key']}">
+                    <p>
+                      Address: {home[0].address1}, {home[0].posttown}, {home[0]
+                        .postcode}
+                    </p>
                     <p>EPC Rating: {home[0]["current-energy-rating"]}</p>
-                  </div>
+                  </a>
                   <button>Remove</button>
                 </li>
-                {/each}
-              </ul>
-            </div>
-          </section>
-        </div>
+              {/each}
+            </ul>
+          </div>
+        </section>
+      </div>
     </section>
   </div>
 </main>
